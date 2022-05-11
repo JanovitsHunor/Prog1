@@ -9,7 +9,7 @@
 using namespace std;
 using namespace Numeric_lib;
 
-// 4-es feladat ------------------------------------------------------------------------------
+// Feladat #4 - Beolvasunk egy intet; ha az érvényes, akkor négyzetgyököt veszünk, másként errort dob vissza.
 
 void ex04()
 {
@@ -26,28 +26,28 @@ void ex04()
     }
 }
 
-// 5-�s feladat ------------------------------------------------------------------------------
+// Feladat #5 - 10 lebegőpontos számot olvasunk be, és betoljuk őket egy double típusú mátrixba.
 
 void ex05()
 {
     cin.clear();
-    cin.ignore(); // mem�ria felszabad�t�s 
+    cin.ignore(); // memória felszabadítás 
     cout << "\nEnter 10 floating point values: ";
     Matrix<double> m(10);
     double d;
     for (int i = 0; i < m.size(); ++i) {
         cin >> d;
         if (!cin) throw runtime_error("Problem reading from cin");
-        m[i] = d; // m�trix i-edik elem�vel egyenl�tj�k a megadott lebeg�pontos �rt�ket!
+        m[i] = d; // mátrix i-edik elemével egyenlítjük a megadott lebegőpontos értéket!
     }
     cout << "Matrix:\n" << m << '\n';
 }
 
-// 6-os feladat ------------------------------------------------------------------------------
+// Feladat #6 - Szorzótábla (2D mátrixként)
 
 void ex06()
 {
-    cout << "\n Multiplication table \nEnter n: "; // szorz�t�bla!!
+    cout << "\n Multiplication table \nEnter n: "; // szorzótábla!!
     int n;
     cin >> n;
     cout << "Enter m: ";
@@ -57,13 +57,14 @@ void ex06()
     for (Index i = 0; i < mtable.dim1(); ++i) {
         for (Index j = 0; j < mtable.dim2(); ++j) {
             mtable(i, j) = (i + 1) * (j + 1);
-            cout << setw(5) << mtable(i, j); // setw f�ggv�ny miatt kell megh�vnunk az iomanip-t!
+            cout << setw(5) << mtable(i, j); // setw függvény miatt kell meghívnunk az iomanip-t!
         }
         cout << '\n';
     }
 }
 
-// 7-es feladat ------------------------------------------------------------------------------
+// Feladat #7 - 10 komplex double-t kell beolvasni és be kell rakni őket egy mátrixba,
+// majd ki kell számolni a 10 komplex szám összegét.
 
 void ex07()
 {
@@ -81,7 +82,7 @@ void ex07()
     cout << "Sum: " << sum << '\n';
 }
 
-// 8-as feladat ------------------------------------------------------------------------------
+// Feladat #8 - 6 integert kell beolvasni egy 2x3-mas mátrixba.
 
 void ex08()
 {
@@ -101,7 +102,7 @@ void ex08()
 int main()
 try
 {
-    // Drill 1: size of various types
+    // Feladat #1 - Típusok memóriaméreteinek kiíratása.
     cout << "sizeof:\n";
     cout << "char\t" << sizeof(char) << '\n';
     cout << "short\t" << sizeof(short) << '\n';
@@ -112,7 +113,7 @@ try
     cout << "int*\t" << sizeof(int*) << '\n';
     cout << "double*\t" << sizeof(double*) << '\n';
 
-    // Drill 2: size of Matrixes
+    // Feladat #2 - Kiírjuk a mátrixok memóriaméreteit.
     cout << "\n Matrix sizes: \n";
     Matrix<int> a(10);
     Matrix<int> b(100);
@@ -125,7 +126,7 @@ try
     cout << "2D int, 10x10 elements\t\t" << sizeof(d) << '\n';
     cout << "3D int, 10x10x10 elements\t" << sizeof(e) << '\n';
 
-    // Drill 3: number of elements
+    // Feladat #3 - A #2-es feladatban lévő mátrixok elemeit kiírjuk.
     cout << "\n Number of elements (same order): \n";
     cout << "a:\t" << a.size() << '\n';
     cout << "b:\t" << b.size() << '\n';
