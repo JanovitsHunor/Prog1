@@ -1,36 +1,35 @@
 #include "std_lib_facilities.h"
 
-template<typename T>
-struct S
+template<typename T> struct S // Feladat #1
 {
-	// ---- konstruktorok
-	S() {}
+	// S() {} ---- konstruktorok
 
-	S(T t)
-		: val(t)
-	{}
+	S(T t = 0) : val(t) {} // Feladat #2
+	T& get(); // Feladat #5
 
-	// ---- mÛdszerek
+	// ---- m√≥dszerek
 	S& operator=(const T& newValue) { val = newValue; return *this; }
 	istream operator>>(T t) { cin >> val; }
 
-	void set(T t) { val = t; }
-	const T& get() const { return val; }
+	void set(T t) { val = t; } // Feladat #9
+	const T& get() const { return val; } // Feladat #11
 
-	// visszatÈrÌti a nem-konstans referenci·kat a val ÈrtÈkbe
+	// visszat√©r√≠ti a nem-konstans referenci√°kat a val √©rt√©kbe
 	T& getRef() { return val; }
 
 private:
-	// ---- v·ltozÛk
+	// ---- v√°ltoz√≥k
 	T val;
 };
 
+// Feladat #5 & Feladat #6
 template<typename T>
 const T& get(S<T>& s)
 {
 	return s.get();
 }
 
+// Feladat #12
 template<typename T>
 void read_val(T& v)
 {
@@ -65,6 +64,7 @@ istream& operator>>(istream& is, vector<T>& vt)
 	return is;
 }
 
+// Feladat #14
 template<typename T>
 ostream& operator<<(ostream& os, vector<T>& vt)
 {
@@ -79,28 +79,28 @@ ostream& operator<<(ostream& os, vector<T>& vt)
 
 int main()
 {
-	S<vector<int>> svi;
-	cout << "Enter ints in format { val, val, val } etc., : ";
+	S<vector<int>> svi; // Feladat #3
+	cout << "Enter ints in format { val, val, val } etc., : "; // Feladat #4 & Feladat #8
 	cin >> svi.getRef();
 	cout << svi.getRef();
 
-	S<vector<char>> svc;
-	cout << "Enter chars in format { val, val, val } etc., : ";
+	S<vector<char>> svc; // Feladat #3
+	cout << "Enter chars in format { val, val, val } etc., : "; // Feladat #4 & Feladat #8
 	cin >> svc.getRef();
 	cout << svc.getRef();
 
-	S<vector<double>> svd;
-	cout << "Enter doubles in format { val, val, val } etc., : ";
+	S<vector<double>> svd; // Feladat #3
+	cout << "Enter doubles in format { val, val, val } etc., : "; // Feladat #4 & Feladat #8
 	cin >> svd.getRef();
 	cout << svd.getRef();
 
-	S<vector<double>> svf;
-	cout << "Enter floats in format { val, val, val } etc., : ";
+	S<vector<double>> svf; // Feladat #3
+	cout << "Enter floats in format { val, val, val } etc., : "; // Feladat #4 & Feladat #8
 	cin >> svf.getRef();
 	cout << svf.getRef();
 
-	S<vector<string>> svs;
-	cout << "Enter strings in format { val, val, val } etc., : ";
+	S<vector<string>> svs; // Feladat #3
+	cout << "Enter strings in format { val, val, val } etc., : "; // Feladat #4 & Feladat #8
 	cin >> svs.getRef();
 	cout << svs.getRef();
 
