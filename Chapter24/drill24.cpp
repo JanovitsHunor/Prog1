@@ -1,32 +1,32 @@
-#include<iostream>
-#include<iomanip>
-#include<cmath>
-#include<complex>
-#include<cerrno>
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <complex>
+#include <cerrno>
 #include "Matrix.h"
 #include "MatrixIO.h"
 
 using namespace std;
 using namespace Numeric_lib;
 
-// Feladat #4 - Beolvasunk egy intet; ha az érvényes, akkor négyzetgyököt veszünk, másként errort dob vissza.
+// Feladat #4 
 
 void ex04()
 {
     int i;
     cout << "\nEnter ints (char to exit): ";
-    //errno = 0;<<
+
     while (cin >> i) {
         errno = 0;
         double d = sqrt(i);
         if (errno == EDOM)
-            cout << "no square root\n";
+            cout << "Doesn't have an accurate square root!\n";
         else
             cout << "sqrt(" << i << ") = " << d << '\n';
     }
 }
 
-// Feladat #5 - 10 lebegőpontos számot olvasunk be, és betoljuk őket egy double típusú mátrixba.
+// Feladat #5
 
 void ex05()
 {
@@ -37,7 +37,7 @@ void ex05()
     double d;
     for (int i = 0; i < m.size(); ++i) {
         cin >> d;
-        if (!cin) throw runtime_error("Problem reading from cin");
+        if (!cin) throw runtime_error("Problem reading from cin:");
         m[i] = d; // mátrix i-edik elemével egyenlítjük a megadott lebegőpontos értéket!
     }
     cout << "Matrix:\n" << m << '\n';
@@ -63,8 +63,7 @@ void ex06()
     }
 }
 
-// Feladat #7 - 10 komplex double-t kell beolvasni és be kell rakni őket egy mátrixba,
-// majd ki kell számolni a 10 komplex szám összegét.
+// 7. feladat
 
 void ex07()
 {
@@ -73,7 +72,7 @@ void ex07()
     complex<double> c;
     for (int i = 0; i < 10; ++i) {
         cin >> c;
-        if (!cin) throw runtime_error("problem reading complex number");
+        if (!cin) throw runtime_error("Problem with reading complex number!");
         m[i] = c;
     }
     complex<double> sum;
@@ -86,15 +85,24 @@ void ex07()
 
 void ex08()
 {
-    Matrix<int, 2> m(2, 3);
-    cout << "\nEnter six ints: ";
-    int n;
-    for (int i = 0; i < m.dim1(); ++i)
-        for (int j = 0; j < m.dim2(); ++j) {
-            cin >> n;
-            m(i, j) = n;
-        }
-    cout << "Matrix:\n" << m << '\n';
+    Matrix<int, 2> m3 (2,3);
+    cout << "Enter six numbers of integers: " << '\n';
+	for (int i = 0; i < 2; ++i)
+	{
+		for (int j = 0; j < 3; ++j)
+		{
+			cin >> m3(i,j);
+		}
+	}
+
+	for (int i = 0; i < 2; ++i)
+	{
+		for (int j = 0; j < 3; ++j)
+		{
+			cout << m3(i,j) << '\t';
+		}
+		cout << endl;
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -134,23 +142,19 @@ try
     cout << "d:\t" << d.size() << '\n';
     cout << "e:\t" << e.size() << '\n';
 
-    // Drill 4: take ints from cin and output sqrt of each or "no square root" if
-    // illegal
+    // Feladat #4: vegyen be inteket a cin-ből, és adjon ki sqrt-t mindegyikből, vagy "nincs négyzetgyök", ha ez illegális!
     ex04();
 
-    // Drill 5: read ten floating-point values from input and put them into a
-    // Matrix<double>; print out the Matrix
+    // Feladat #5: olvassa be tíz lebegőpontos értéket a bemenetből, és helyezze el egy Mátrix<double>-ba; nyomtassa ki a mátrixot!
     ex05();
 
-    // Drill 6: compute a multiplication table for [0,n)*[0,m), represent it as a 2D
-    // Matrix. Take n and m from cin and print the table nicely
+    // Feladat #6: számítson ki egy szorzótáblát [0,n)*[0,m-hez), ábrázolja 2D mátrixként. Vegyünk n-t és m-t cinből, és nyomtassuk ki szépen a táblázatot!
     ex06();
 
-    // Drill 7: read ten complex<double> from cin, put them into a Matrix, calculate
-    // and output the sum of the ten complex numbers
+    // Feladat #7: olvass be tíz complex<double>-t a cinből, tedd be őket egy mátrixba, számítsd ki és add ki a tíz komplex szám összegét!
     ex07();
 
-    // Drill 8: read six ints into a Matrix<int,2> m(2,3) and print them out
+    // Feladat #8: olvass be hat int egy Mátrix<int,2> m(2,3)-ba és nyomtasd ki!
     ex08();
 }
 catch (exception& e) {
